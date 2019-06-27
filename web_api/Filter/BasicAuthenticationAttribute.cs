@@ -41,17 +41,15 @@ namespace web_api.Filter
             {
                 bool isLogin = false;
 
-                //CookieHeaderValue cookie = actionContext.Request.Headers.GetCookies("login_key").FirstOrDefault();
-                //if (cookie != null)
-                //{
-                //    var key = cookie["login_key"].Value;
-
-                //}
-                ////如果已经登录，则跳过验证
-                //else
-                //{
-                //    actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
-                //}
+                CookieHeaderValue cookie = actionContext.Request.Headers.GetCookies("login_key").FirstOrDefault();
+                if (cookie != null)
+                {
+                    var key = cookie["login_key"].Value;
+                    //这里通过key 与数据库进行判断
+                    // if()
+                    isLogin = true;
+                }
+               
 
                 if (isLogin)
                 {
