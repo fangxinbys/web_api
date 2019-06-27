@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using System.Web.Http.Results;
 using System.Web.WebPages;
 
 namespace web_api.Filter
@@ -20,6 +23,7 @@ namespace web_api.Filter
         /// <param name="actionContext"></param>
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
+
             bool isRquired = false;
 
             try
@@ -37,16 +41,22 @@ namespace web_api.Filter
             {
                 bool isLogin = false;
 
-                //用户登录验证
-                //代码.....
-                //代码.....
-                //代码.....
-                //isLogin = true or false;
+                //CookieHeaderValue cookie = actionContext.Request.Headers.GetCookies("login_key").FirstOrDefault();
+                //if (cookie != null)
+                //{
+                //    var key = cookie["login_key"].Value;
+
+                //}
+                ////如果已经登录，则跳过验证
+                //else
+                //{
+                //    actionContext.Response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+                //}
 
                 if (isLogin)
                 {
-                    //如果已经登录，则跳过验证
                     base.OnActionExecuting(actionContext);
+                   
                 }
                 else
                 {
@@ -62,5 +72,6 @@ namespace web_api.Filter
                 }
             }
         }
+ 
     }
 }
