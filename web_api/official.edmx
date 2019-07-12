@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="xdwlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tAbout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="AboutContent" Type="nvarchar(max)" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Editor" Type="nvarchar" MaxLength="30" />
+          <Property Name="UpdateTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Click" Type="int" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="FengMian" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsEnable" Type="int" />
+        </EntityType>
+        <EntityType Name="tArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="ArticleContent" Type="nvarchar(max)" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Editor" Type="nvarchar" MaxLength="30" />
+          <Property Name="UpdateTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArtTyID" Type="int" />
+          <Property Name="Click" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="FengMian" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsEnable" Type="int" />
+        </EntityType>
+        <EntityType Name="tArticleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="FatherID" Type="int" />
+          <Property Name="IsEnable" Type="int" />
+        </EntityType>
+        <EntityType Name="tGuestBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Leave_name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Telphone" Type="varchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="QQ" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="GuestContent" Type="nvarchar(max)" />
+          <Property Name="Leave_time" Type="datetime" />
+          <Property Name="Leave_ip" Type="varchar" MaxLength="30" />
+          <Property Name="ReplayContent" Type="nvarchar(max)" />
+          <Property Name="Replay_ip" Type="varchar" MaxLength="30" />
+          <Property Name="Replay_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tLink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Url" Type="varchar" MaxLength="100" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="TyID" Type="int" />
+        </EntityType>
+        <EntityType Name="tLinkType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="FatherID" Type="int" />
+        </EntityType>
+        <EntityType Name="tMenu">
+          <Key>
+            <PropertyRef Name="menuCode" />
+          </Key>
+          <Property Name="menuCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menuName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="menuUrl" Type="varchar" MaxLength="250" />
+          <Property Name="sort" Type="int" />
+          <Property Name="menuType" Type="nchar" MaxLength="10" />
+          <Property Name="menuParent" Type="int" Nullable="false" />
+          <Property Name="target" Type="varchar" MaxLength="50" />
+          <Property Name="rel" Type="varchar" MaxLength="50" />
+          <Property Name="fresh" Type="varchar" MaxLength="50" />
+          <Property Name="note" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tMenuGroup">
+          <Key>
+            <PropertyRef Name="menuGroupCode" />
+          </Key>
+          <Property Name="menuGroupCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menuGroupName" Type="nvarchar" MaxLength="100" />
+          <Property Name="parentCode" Type="int" />
+          <Property Name="menuGroupUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="seq" Type="int" />
+          <Property Name="target" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tPicture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PicTyID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tPictureType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="FatherId" Type="int" />
+        </EntityType>
+        <EntityType Name="tRole">
+          <Key>
+            <PropertyRef Name="roleCode" />
+          </Key>
+          <Property Name="roleCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“xdwl.dbo.tRoleMenu”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="tRoleMenu">
+          <Key>
+            <PropertyRef Name="roleCode" />
+            <PropertyRef Name="menuCode" />
+          </Key>
+          <Property Name="roleCode" Type="int" Nullable="false" />
+          <Property Name="menuCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Copyright" Type="nvarchar" MaxLength="150" />
+          <Property Name="KeyWords" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="550" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="350" />
+          <Property Name="Address" Type="nvarchar" MaxLength="350" />
+          <Property Name="BeiAn" Type="nvarchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="tUsers">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usersName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usersPwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="roleCode" Type="int" Nullable="false" />
+          <Property Name="trueName" Type="varchar" MaxLength="50" />
+          <Property Name="flag" Type="int" Nullable="false" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="usersRemark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityContainer Name="xdwlModelStoreContainer">
+          <EntitySet Name="tAbout" EntityType="Self.tAbout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tArticle" EntityType="Self.tArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tArticleType" EntityType="Self.tArticleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tGuestBook" EntityType="Self.tGuestBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tLink" EntityType="Self.tLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tLinkType" EntityType="Self.tLinkType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMenu" EntityType="Self.tMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMenuGroup" EntityType="Self.tMenuGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tPicture" EntityType="Self.tPicture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tPictureType" EntityType="Self.tPictureType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRole" EntityType="Self.tRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tSet" EntityType="Self.tSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tUsers" EntityType="Self.tUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRoleMenu" EntityType="Self.tRoleMenu" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tRoleMenu].[roleCode] AS [roleCode], 
+    [tRoleMenu].[menuCode] AS [menuCode]
+    FROM [dbo].[tRoleMenu] AS [tRoleMenu]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="xdwlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tAbout">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AboutContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="Editor" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Click" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FengMian" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="Editor" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArtTyID" Type="Int32" />
+          <Property Name="Click" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FengMian" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tArticleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="FatherID" Type="Int32" />
+          <Property Name="IsEnable" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tGuestBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telphone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QQ" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GuestContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Leave_time" Type="DateTime" Precision="3" />
+          <Property Name="Leave_ip" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ReplayContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Replay_ip" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Replay_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tLink">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="TyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tLinkType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="FatherID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tMenu">
+          <Key>
+            <PropertyRef Name="menuCode" />
+          </Key>
+          <Property Name="menuCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="menuUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="menuType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="menuParent" Type="Int32" Nullable="false" />
+          <Property Name="target" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fresh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tMenuGroup">
+          <Key>
+            <PropertyRef Name="menuGroupCode" />
+          </Key>
+          <Property Name="menuGroupCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menuGroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="parentCode" Type="Int32" />
+          <Property Name="menuGroupUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="seq" Type="Int32" />
+          <Property Name="target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tPicture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PicTyID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tPictureType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FatherId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tRole">
+          <Key>
+            <PropertyRef Name="roleCode" />
+          </Key>
+          <Property Name="roleCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Copyright" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="KeyWords" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="BeiAn" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tUsers">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usersName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usersPwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roleCode" Type="Int32" Nullable="false" />
+          <Property Name="trueName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="flag" Type="Int32" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="usersRemark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tRoleMenu">
+          <Key>
+            <PropertyRef Name="roleCode" />
+            <PropertyRef Name="menuCode" />
+          </Key>
+          <Property Name="roleCode" Type="Int32" Nullable="false" />
+          <Property Name="menuCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="xdwlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tAbout" EntityType="Self.tAbout" />
+          <EntitySet Name="tArticle" EntityType="Self.tArticle" />
+          <EntitySet Name="tArticleType" EntityType="Self.tArticleType" />
+          <EntitySet Name="tGuestBook" EntityType="Self.tGuestBook" />
+          <EntitySet Name="tLink" EntityType="Self.tLink" />
+          <EntitySet Name="tLinkType" EntityType="Self.tLinkType" />
+          <EntitySet Name="tMenu" EntityType="Self.tMenu" />
+          <EntitySet Name="tMenuGroup" EntityType="Self.tMenuGroup" />
+          <EntitySet Name="tPicture" EntityType="Self.tPicture" />
+          <EntitySet Name="tPictureType" EntityType="Self.tPictureType" />
+          <EntitySet Name="tRole" EntityType="Self.tRole" />
+          <EntitySet Name="tSet" EntityType="Self.tSet" />
+          <EntitySet Name="tUsers" EntityType="Self.tUsers" />
+          <EntitySet Name="tRoleMenu" EntityType="Self.tRoleMenu" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="xdwlModelStoreContainer" CdmEntityContainer="xdwlEntities">
+          <EntitySetMapping Name="tAbout">
+            <EntityTypeMapping TypeName="xdwlModel.tAbout">
+              <MappingFragment StoreEntitySet="tAbout">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AboutContent" ColumnName="AboutContent" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Editor" ColumnName="Editor" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="FengMian" ColumnName="FengMian" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tArticle">
+            <EntityTypeMapping TypeName="xdwlModel.tArticle">
+              <MappingFragment StoreEntitySet="tArticle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Editor" ColumnName="Editor" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="ArtTyID" ColumnName="ArtTyID" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="FengMian" ColumnName="FengMian" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tArticleType">
+            <EntityTypeMapping TypeName="xdwlModel.tArticleType">
+              <MappingFragment StoreEntitySet="tArticleType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="FatherID" ColumnName="FatherID" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tGuestBook">
+            <EntityTypeMapping TypeName="xdwlModel.tGuestBook">
+              <MappingFragment StoreEntitySet="tGuestBook">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Leave_name" ColumnName="Leave_name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telphone" ColumnName="Telphone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="GuestContent" ColumnName="GuestContent" />
+                <ScalarProperty Name="Leave_time" ColumnName="Leave_time" />
+                <ScalarProperty Name="Leave_ip" ColumnName="Leave_ip" />
+                <ScalarProperty Name="ReplayContent" ColumnName="ReplayContent" />
+                <ScalarProperty Name="Replay_ip" ColumnName="Replay_ip" />
+                <ScalarProperty Name="Replay_time" ColumnName="Replay_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tLink">
+            <EntityTypeMapping TypeName="xdwlModel.tLink">
+              <MappingFragment StoreEntitySet="tLink">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="TyID" ColumnName="TyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tLinkType">
+            <EntityTypeMapping TypeName="xdwlModel.tLinkType">
+              <MappingFragment StoreEntitySet="tLinkType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="FatherID" ColumnName="FatherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMenu">
+            <EntityTypeMapping TypeName="xdwlModel.tMenu">
+              <MappingFragment StoreEntitySet="tMenu">
+                <ScalarProperty Name="menuCode" ColumnName="menuCode" />
+                <ScalarProperty Name="menuName" ColumnName="menuName" />
+                <ScalarProperty Name="menuUrl" ColumnName="menuUrl" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="menuType" ColumnName="menuType" />
+                <ScalarProperty Name="menuParent" ColumnName="menuParent" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="rel" ColumnName="rel" />
+                <ScalarProperty Name="fresh" ColumnName="fresh" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMenuGroup">
+            <EntityTypeMapping TypeName="xdwlModel.tMenuGroup">
+              <MappingFragment StoreEntitySet="tMenuGroup">
+                <ScalarProperty Name="menuGroupCode" ColumnName="menuGroupCode" />
+                <ScalarProperty Name="menuGroupName" ColumnName="menuGroupName" />
+                <ScalarProperty Name="parentCode" ColumnName="parentCode" />
+                <ScalarProperty Name="menuGroupUrl" ColumnName="menuGroupUrl" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tPicture">
+            <EntityTypeMapping TypeName="xdwlModel.tPicture">
+              <MappingFragment StoreEntitySet="tPicture">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PicTyID" ColumnName="PicTyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tPictureType">
+            <EntityTypeMapping TypeName="xdwlModel.tPictureType">
+              <MappingFragment StoreEntitySet="tPictureType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="FatherId" ColumnName="FatherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRole">
+            <EntityTypeMapping TypeName="xdwlModel.tRole">
+              <MappingFragment StoreEntitySet="tRole">
+                <ScalarProperty Name="roleCode" ColumnName="roleCode" />
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSet">
+            <EntityTypeMapping TypeName="xdwlModel.tSet">
+              <MappingFragment StoreEntitySet="tSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebName" ColumnName="WebName" />
+                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+                <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BeiAn" ColumnName="BeiAn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUsers">
+            <EntityTypeMapping TypeName="xdwlModel.tUsers">
+              <MappingFragment StoreEntitySet="tUsers">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="usersName" ColumnName="usersName" />
+                <ScalarProperty Name="usersPwd" ColumnName="usersPwd" />
+                <ScalarProperty Name="roleCode" ColumnName="roleCode" />
+                <ScalarProperty Name="trueName" ColumnName="trueName" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="usersRemark" ColumnName="usersRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRoleMenu">
+            <EntityTypeMapping TypeName="xdwlModel.tRoleMenu">
+              <MappingFragment StoreEntitySet="tRoleMenu">
+                <ScalarProperty Name="roleCode" ColumnName="roleCode" />
+                <ScalarProperty Name="menuCode" ColumnName="menuCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
