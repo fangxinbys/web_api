@@ -42,7 +42,7 @@
      
 
         $(document).ready(function () {
-            var uri = 'api/products/GetAllProducts';
+            var uri = 'api/Article/GetAllArticle';
             $.getJSON(uri)
                 .done(function (data) {
                     // On success, 'data' contains a list of products.
@@ -54,7 +54,7 @@
         });
 
         function formatItem(item) {
-            return item.Name + ': $' + item.Price;
+            return item.Title;
         }
 
         function find() {
